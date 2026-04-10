@@ -3,10 +3,13 @@ import FoodCard from "@/components/FoodCard";
 const FoodsPage = async () => {
     const res = await fetch('https://phi-lab-server.vercel.app/api/v1/lab/foods');
     const data = await res.json();
-    console.log(data.data);
+    const foods = data.data;
     return (
         <div>
-            <FoodCard data={data.data} />
+            <h2>Foods: {foods.length}</h2>
+            {
+                foods.map((food, idx) => <FoodCard key={idx} food={food} />)
+            }
         </div>
     );
 };
