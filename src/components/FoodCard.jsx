@@ -46,25 +46,30 @@
 //     "image_link": "https://res.cloudinary.com/dj493l0jy/image/upload/v1773919302/foods/7b210282-1035-42da-a858-4ed58127633f.png"
 
 import Image from "next/image";
+import Link from "next/link";
 
 // }
 const FoodCard = ({ food }) => {
-    const {dish_name, image_link, } = food;
+    const {id, dish_name, image_link, category, price } = food;
     console.log(food);
     return (
         <div className="card bg-base-100 shadow-sm">
             <figure>
-                <Image src={image_link} alt="dish_name" width={400} height={300} priority style={{ width: '100%', height: 'auto' }} />
+                <Image className="object-cover" src={image_link} alt="dish_name" width={400} height={300} priority style={{ width: '100%', height: 'auto' }} />
             </figure>
             <div className="card-body">
                 <h2 className="card-title text-lg">
                     {dish_name}
                     <div className="badge badge-secondary">NEW</div>
                 </h2>
+                <p><small>{category}</small></p>
+                <p>Price: ${price}</p>
                 <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
                 <div className="card-actions justify-end">
-                    <div className="badge badge-outline">Fashion</div>
-                    <div className="badge badge-outline">Products</div>
+                    <button className="btn btn-primary">Add To Card</button>
+                    <Link href={`/foods/${id}`}>
+                        <button className="btn btn-btn-ghost">Show Details</button>
+                    </Link>
                 </div>
             </div>
         </div>

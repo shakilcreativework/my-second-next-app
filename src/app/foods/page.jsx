@@ -6,8 +6,7 @@ const FoodsPage = async () => {
     const foods = data.data;
     return (
         <div>
-            <h2>Foods: {foods.length}</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:6 my-10">
                 {
                     foods.map((food, idx) => <FoodCard key={idx} food={food} />)
                 }
